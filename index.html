@@ -5,37 +5,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des Packages Dashboard</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 
 <body class="bg-gray-100 font-sans">
-  <div class="flex flex-col h-screen md:flex-row">
-    <!-- Sidebar -->
-    <aside id="sidebar" class="bg-gray-800 text-gray-200 w-64 md:translate-x-0 fixed md:relative md:flex-shrink-0 h-full transition-transform transform -translate-x-full md:block">
-      <div class="flex justify-between items-center p-4 bg-gray-900 md:hidden">
-        <h1 class="text-xl font-bold">Dashboard</h1>
-        <button id="closeSidebar" class="material-symbols-outlined text-gray-400 focus:outline-none">
-          close
-        </button>
-      </div>
-      <nav class="space-y-4 p-4">
-        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+  <!-- Navbar -->
+  <header class="bg-gray-900 text-gray-200 px-4 py-3 flex items-center justify-between md:hidden">
+    <h1 class="text-lg font-bold">Dashboard</h1>
+    <button id="toggleMenu" class="material-symbols-outlined text-gray-400 focus:outline-none">
+      menu
+    </button>
+  </header>
+
+  <!-- Dropdown Menu (hidden by default) -->
+  <nav id="dropdownMenu" class="bg-gray-800 text-gray-200 hidden absolute top-12 left-0 w-full shadow-md transition-transform duration-300 transform -translate-y-full">
+    <ul class="flex flex-col space-y-2 p-4">
+      <li>
+        <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
           <span class="material-symbols-outlined">dashboard</span>
-          <span>Dashboard</span>
+          <span>Authors</span>
         </a>
-        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+      </li>
+      <li>
+        <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
           <span class="material-symbols-outlined">receipt_long</span>
-          <span>Reports</span>
+          <span>Packages</span>
         </a>
-        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+      </li>
+      <li>
+        <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
           <span class="material-symbols-outlined">settings</span>
-          <span>Settings</span>
+          <span>Versions</span>
         </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="flex h-screen">
+    <!-- Sidebar (fixed for larger screens) -->
+    <aside class="bg-gray-800 text-gray-200 w-64 hidden md:flex flex-col h-full">
+      <!-- Sidebar Header -->
+      <div class="flex items-center justify-between px-6 py-4 bg-gray-900">
+        <h1 class="text-lg font-bold">Dashboard</h1>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 overflow-y-auto">
+        <ul class="space-y-2 p-4">
+          <li>
+            <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
+              <span class="material-symbols-outlined">dashboard</span>
+              <span>Authors</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
+              <span class="material-symbols-outlined">receipt_long</span>
+              <span>Packages</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
+              <span class="material-symbols-outlined">settings</span>
+              <span>Versions</span>
+            </a>
+          </li>
+        </ul>
       </nav>
     </aside>
-
     <!-- Main Content -->
     <div class="flex-1 p-6">
       <!-- Header -->
@@ -45,7 +84,7 @@
           <span  class="material-symbols-outlined">add</span>
         </button>
       </header>
-
+    
       <!-- Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
         <div class="bg-white p-4 rounded-lg shadow">
@@ -85,7 +124,7 @@
         </div>
       </div>
     </main>
-  </div>
+    </div>
 
   <script src="./assets/js/script.js"></script>
 </body>
