@@ -1,19 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>Document</title>
+  <title>Gestion des Packages Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <footer>
-  </footer>
-  <script src="scripts.js"></script>
+
+<body class="bg-gray-100 font-sans">
+  <div class="flex flex-col h-screen md:flex-row">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-gray-800 text-gray-200 w-64 md:translate-x-0 fixed md:relative md:flex-shrink-0 h-full transition-transform transform -translate-x-full md:block">
+      <div class="flex justify-between items-center p-4 bg-gray-900 md:hidden">
+        <h1 class="text-xl font-bold">Dashboard</h1>
+        <button id="closeSidebar" class="material-symbols-outlined text-gray-400 focus:outline-none">
+          close
+        </button>
+      </div>
+      <nav class="space-y-4 p-4">
+        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+          <span class="material-symbols-outlined">receipt_long</span>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="flex items-center space-x-2 py-2 px-4 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-semibold text-gray-800">Dashboard</h2>
+        <button  id="addModal" onclick="openModal()" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+          <span  class="material-symbols-outlined">add</span>
+        </button>
+      </header>
+
+      <!-- Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h3 class="text-lg font-medium text-gray-800">Packages</h3>
+          <p class="text-2xl font-bold text-gray-900">15</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h3 class="text-lg font-medium text-gray-800">Authors</h3>
+          <p class="text-2xl font-bold text-gray-900">8</p>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="bg-white rounded-lg shadow-lg  max-w-md p-6 relative">
+          <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+          <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Add New Package</h2>
+          <form id="packageAuthorForm" class="space-y-4">
+            <div>
+              <label for="packageName" class="block text-sm font-medium text-gray-600">Package Name</label>
+              <input type="text" id="packageName" name="packageName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter package name" required />
+            </div>
+            <div>
+              <label for="authorName" class="block text-sm font-medium text-gray-600">Author Name</label>
+              <input type="text" id="authorName" name="authorName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter author name" required />
+            </div>
+            <div>
+              <label for="description" class="block text-sm font-medium text-gray-600">Description</label>
+              <textarea id="description" name="description" rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter a brief description" required></textarea>
+            </div>
+            <div class="flex justify-end space-x-4">
+              <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+              <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
