@@ -3,6 +3,8 @@ const closeModal = document.getElementById("closeModal");
 const cancelModal = document.getElementById("cancelModal");
 const dropdownMenu = document.getElementById("dropdownMenu");
 const modal = document.getElementById("modal");
+const packageBtn = document.getElementById("packageBtn");
+const dataTable = document.getElementById("dataTable");
 
 toggleMenu.addEventListener("click", () => {
   dropdownMenu.classList.toggle("hidden");
@@ -19,3 +21,8 @@ closeModal.addEventListener('click', ()=> {
 cancelModal.addEventListener('click', ()=> {
     modal.classList.add("hidden");
 })
+
+packageBtn.addEventListener('click', ()=> {
+    dataTable.classList.toggle('hidden')
+})
+
