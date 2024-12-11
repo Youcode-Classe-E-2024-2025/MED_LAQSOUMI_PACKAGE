@@ -590,6 +590,10 @@ video {
   z-index: 50;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -644,6 +648,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[\] {
+  width: ;
 }
 
 .max-w-md {
@@ -826,6 +834,14 @@ video {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-20 {
+  padding: 5rem;
 }
 
 .px-4 {
