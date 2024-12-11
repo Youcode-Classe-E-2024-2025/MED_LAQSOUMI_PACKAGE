@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des Packages Dashboard</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
@@ -86,21 +87,21 @@
       </header>
     
       <!-- Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6">
-          <button class="bg-white p-4 rounded-lg shadow">
-          <h3 class="text-lg font-medium text-gray-800">Packages</h3>
-          <p class="text-2xl font-bold text-gray-900">15</p>
+      <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 text-white">
+          <button class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
+          <h3 class="text-lg font-medium">Packages</h3>
+          <p class="text-2xl font-bold">15</p>
           </button>
-          <button class="bg-white p-4 rounded-lg shadow">
-          <h3 class="text-lg font-medium text-gray-800">Authors</h3>
-          <p class="text-2xl font-bold text-gray-900">8</p>
+          <button class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
+          <h3 class="text-lg font-medium">Authors</h3>
+          <p class="text-2xl font-bold">8</p>
           </button>
-          <button class="bg-white p-4 rounded-lg shadow">
-          <h3 class="text-lg font-medium text-gray-800">Versions</h3>
-          <p class="text-2xl font-bold text-gray-900">8</p>
+          <button class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
+          <h3 class="text-lg font-medium">Versions</h3>
+          <p class="text-2xl font-bold">8</p>
           </button>
       </div>
-      <div class="bg-white p-4 rounded-lg shadow gap-4 flex flex-col">
+      <div class="bg-[#F3F4F6] p-4 rounded-lg shadow gap-4 flex flex-col">
           <h3 class="text-lg font-medium text-gray-800">LIST: </h3>
           <table class="border-collapse border border-gray-400 w-full text-left">
           <thead>
@@ -136,7 +137,7 @@
         </div>
       <!-- Modal -->
       <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-        <div class="bg-white rounded-lg shadow-lg  max-w-md p-6 relative">
+        <div class="bg-[#F3F4F6] rounded-lg shadow-lg  max-w-md p-6 relative">
           <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
             <span class="material-symbols-outlined">close</span>
           </button>
