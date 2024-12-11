@@ -86,15 +86,19 @@
       </header>
     
       <!-- Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-        <div class="bg-white p-4 rounded-lg shadow">
+      <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6">
+          <button class="bg-white p-4 rounded-lg shadow">
           <h3 class="text-lg font-medium text-gray-800">Packages</h3>
           <p class="text-2xl font-bold text-gray-900">15</p>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow">
+          </button>
+          <button class="bg-white p-4 rounded-lg shadow">
           <h3 class="text-lg font-medium text-gray-800">Authors</h3>
           <p class="text-2xl font-bold text-gray-900">8</p>
-        </div>
+          </button>
+          <button class="bg-white p-4 rounded-lg shadow">
+          <h3 class="text-lg font-medium text-gray-800">Versions</h3>
+          <p class="text-2xl font-bold text-gray-900">8</p>
+          </button>
       </div>
       <div class="bg-white p-4 rounded-lg shadow gap-4 flex flex-col">
           <h3 class="text-lg font-medium text-gray-800">LIST: </h3>
