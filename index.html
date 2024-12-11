@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des Packages Dashboard</title>
   <link rel="stylesheet" href="./assets/css/style.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"> -->
+  <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
@@ -21,7 +21,7 @@
   </header>
 
   <!-- Dropdown Menu (hidden by default) -->
-  <nav id="dropdownMenu" class="bg-gray-800 text-gray-200 hidden absolute top-12 left-0 w-full shadow-md transition-transform duration-300 transform -translate-y-full">
+  <nav id="dropdownMenu" class="bg-gray-800 text-gray-200 hidden absolute top-12 left-0 w-screen shadow-md transition-transform duration-300 transform -translate-y-full">
     <ul class="flex flex-col space-y-2 p-4">
       <li>
         <a href="#" class="flex items-center space-x-2 py-2 px-4 hover:bg-gray-700 hover:text-white rounded transition">
@@ -77,11 +77,11 @@
       </nav>
     </aside>
     <!-- Main Content -->
-    <div class="flex-1 p-6 flex gap-6 flex-col">
+    <div class="flex-1 p-6 flex gap-6 flex-col w-[50%] h-screen">
       <!-- Header -->
       <header class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-semibold text-gray-800">DASHBOARD</h2>
-        <button  id="addModal" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+        <button  id="addModal" class="flex items-center bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-[#04BF7B]">
           <span  class="material-symbols-outlined">add</span>
         </button>
       </header>
@@ -90,51 +90,17 @@
       <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 text-white">
           <button id="authorBtn" class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
           <h3 class="text-lg font-medium">Authors</h3>
-          <p class="text-2xl font-bold">8</p>
+          <p class="text-2xl font-bold"></p>
           </button>
           <button id="packageBtn" class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
           <h3 class="text-lg font-medium">Packages</h3>
-          <p class="text-2xl font-bold">15</p>
+          <p class="text-2xl font-bold"></p>
           </button>
           <button id="VersionBtn" class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
           <h3 class="text-lg font-medium">Versions</h3>
-          <p class="text-2xl font-bold">8</p>
+          <p class="text-2xl font-bold"></p>
           </button>
       </div>
-      <div id="dataTable" class="bg-[#F3F4F6] p-4 rounded-lg shadow gap-4 flex flex-col hidden">
-          <h3 class="text-lg font-medium text-gray-800">LIST: </h3>
-          <table class="border-collapse border border-gray-400 w-full text-left">
-          <thead>
-            <tr>
-              <th class="border border-gray-400 px-4 py-2">ID</th>
-              <th class="border border-gray-400 px-4 py-2">Name</th>
-              <th class="border border-gray-400 px-4 py-2">Email</th>
-              <th class="border border-gray-400 px-4 py-2">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="border border-gray-400 px-4 py-2">1</td>
-              <td class="border border-gray-400 px-4 py-2">John Doe</td>
-              <td class="border border-gray-400 px-4 py-2">johndoe@example.com</td>
-              <td class="border border-gray-400 px-4 py-2">Admin</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-400 px-4 py-2">2</td>
-              <td class="border border-gray-400 px-4 py-2">Jane Smith</td>
-              <td class="border border-gray-400 px-4 py-2">janesmith@example.com</td>
-              <td class="border border-gray-400 px-4 py-2">Editor</td>
-            </tr>
-            <tr>
-              <td class="border border-gray-400 px-4 py-2">3</td>
-              <td class="border border-gray-400 px-4 py-2">Michael Brown</td>
-              <td class="border border-gray-400 px-4 py-2">michaelbrown@example.com</td>
-              <td class="border border-gray-400 px-4 py-2">Viewer</td>
-            </tr>
-          </tbody>
-        </table>
-
-        </div>
       <!-- Modal -->
       <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
         <div class="bg-[#F3F4F6] rounded-lg shadow-lg  max-w-md p-6 relative">
@@ -162,7 +128,58 @@
           </form>
         </div>
       </div>
+      <section id="dataTable" class="bg-gray-900 text-white overflow-x-scroll p-10 rounded-lg shadow-lg hidden">
+        <h3 class="text-lg font-medium">LIST: </h3>
+          <table class="border-collapse border-2 border-gray-400 w-full text-white text-center">
+            <thead>
+              <tr>
+                <th class="border-2 border-gray-400 px-4 py-2">Package_Name</th>
+                <th class="border-2 border-gray-400 px-4 py-2">Package_Description</th>
+                <th class="border-2 border-gray-400 px-4 py-2">Autheur_Name</th>
+                <th class="border-2 border-gray-400 px-4 py-2">Autheur_Email</th>
+                <th class="border-2 border-gray-400 px-4 py-2">Version_Number</th>
+                <th class="border-2 border-gray-400 px-4 py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border-2 border-gray-400 px-4 py-2">1</td>
+                <td class="border-2 border-gray-400 px-4 py-2">John Doe</td>
+                <td class="border-2 border-gray-400 px-4 py-2">johndoe@example.com</td>
+                <td class="border-2 border-gray-400 px-4 py-2">johndoe@example.com</td>
+                <td class="border-2 border-gray-400 px-4 py-2">Admin</td>
+                <td class="border-2 border-gray-400 px-4 py-2 flex justify-around">
+                  <button class="bg-[#f2bb05] hover:bg-yellow-600 material-symbols-outlined p-4 rounded-lg shadow">edit</button>
+                  <button class="hover:bg-red-500 material-symbols-outlined p-4 rounded-lg shadow bg-[#BF0404]">delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="border-2 border-gray-400 px-4 py-2">2</td>
+                <td class="border-2 border-gray-400 px-4 py-2">Jane Smith</td>
+                <td class="border-2 border-gray-400 px-4 py-2">janesmith@example.com</td>
+                <td class="border-2 border-gray-400 px-4 py-2">janesmith@example.com</td>
+                <td class="border-2 border-gray-400 px-4 py-2">Editor</td>
+                <td class="border-2 border-gray-400 px-4 py-2 flex justify-around">
+                  <button class="bg-[#f2bb05] hover:bg-yellow-600 material-symbols-outlined p-4 rounded-lg shadow">edit</button>
+                  <button class="hover:bg-red-500 material-symbols-outlined p-4 rounded-lg shadow bg-[#BF0404]">delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-400 px-4 py-2">3</td>
+                <td class="border border-gray-400 px-4 py-2">Michael Brown</td>
+                <td class="border border-gray-400 px-4 py-2">michaelbrown@example.com</td>
+                <td class="border border-gray-400 px-4 py-2">michaelbrown@example.com</td>
+                <td class="border border-gray-400 px-4 py-2">Viewer</td>
+                <td class="border border-gray-400 px-4 py-2 flex justify-around">
+                  <button class="bg-[#f2bb05] hover:bg-yellow-600 material-symbols-outlined p-4 rounded-lg shadow">edit</button>
+                  <button class="hover:bg-red-500 material-symbols-outlined p-4 rounded-lg shadow bg-[#BF0404]">delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </section>
     </main>
+    
   </div>
   <script src="./assets/js/script.js"></script>
 </body>
