@@ -76,11 +76,11 @@
       </nav>
     </aside>
     <!-- Main Content -->
-    <div class="flex-1 p-6">
+    <div class="flex-1 p-6 flex gap-6 flex-col">
       <!-- Header -->
       <header class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-semibold text-gray-800">DASHBOARD</h2>
-        <button  id="addModal" onclick="openModal()" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+        <button  id="addModal" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
           <span  class="material-symbols-outlined">add</span>
         </button>
       </header>
@@ -96,6 +96,40 @@
           <p class="text-2xl font-bold text-gray-900">8</p>
         </div>
       </div>
+      <div class="bg-white p-4 rounded-lg shadow gap-4 flex flex-col">
+          <h3 class="text-lg font-medium text-gray-800">LIST: </h3>
+          <table class="border-collapse border border-gray-400 w-full text-left">
+          <thead>
+            <tr>
+              <th class="border border-gray-400 px-4 py-2">ID</th>
+              <th class="border border-gray-400 px-4 py-2">Name</th>
+              <th class="border border-gray-400 px-4 py-2">Email</th>
+              <th class="border border-gray-400 px-4 py-2">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-400 px-4 py-2">1</td>
+              <td class="border border-gray-400 px-4 py-2">John Doe</td>
+              <td class="border border-gray-400 px-4 py-2">johndoe@example.com</td>
+              <td class="border border-gray-400 px-4 py-2">Admin</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-400 px-4 py-2">2</td>
+              <td class="border border-gray-400 px-4 py-2">Jane Smith</td>
+              <td class="border border-gray-400 px-4 py-2">janesmith@example.com</td>
+              <td class="border border-gray-400 px-4 py-2">Editor</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-400 px-4 py-2">3</td>
+              <td class="border border-gray-400 px-4 py-2">Michael Brown</td>
+              <td class="border border-gray-400 px-4 py-2">michaelbrown@example.com</td>
+              <td class="border border-gray-400 px-4 py-2">Viewer</td>
+            </tr>
+          </tbody>
+        </table>
+
+        </div>
       <!-- Modal -->
       <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
         <div class="bg-white rounded-lg shadow-lg  max-w-md p-6 relative">
