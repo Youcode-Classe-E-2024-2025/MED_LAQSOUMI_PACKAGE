@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des Packages Dashboard</title>
   <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -78,7 +79,7 @@
       </nav>
     </aside>
     <!-- Main Content -->
-    <button id="asideBtn" class="material-symbols-outlined text-gray-900 h-fit relative top-8 left-2 hidden">arrow_forward</button>
+    <button id="asideBtn" class="material-symbols-outlined text-gray-900 h-fit relative top-8 left-2 hidden md:flex lg:flex">arrow_forward</button>
     <div class="flex-1 p-6 flex gap-6 flex-col w-[50%] h-screen">
       <!-- Header -->
       <header class="flex justify-between items-center mb-6">
@@ -162,9 +163,9 @@
         
         // Start the table
         echo '
-        <section id="dataTable" class="bg-gray-900 text-white w-[100%] h-full flex flex-col items-center relative p-6 overflow-x-scroll lg:overflow-auto rounded-lg shadow-lg">
+        <section id="dataTable" class="bg-gray-900 text-white w-[100%] h-full flex flex-col items-center relative overflow-x-auto lg:overflow-auto rounded-lg shadow-lg">
         <h1>Liste des Packages: </h1>
-            <table class="border-collapse border-2 border-gray-400 w-auto text-white text-sm text-center p-6 m-5">
+            <table class="border-collapse border-2 border-gray-400 w-screen text-white text-sm text-center p-20 m-5">
                 <thead>
                     <tr>
                         <th class="border border-gray-400 px-2 py-1">#ID</th>
