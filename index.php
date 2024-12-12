@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-Rubik">
   <!-- Navbar -->
   <header class="bg-gray-900 text-gray-200 px-4 py-3 flex items-center justify-between md:hidden">
     <h1 class="text-lg font-bold material-symbols-outlined">Dashboard</h1>
@@ -43,10 +43,11 @@
       </li>
     </ul>
   </nav>
-
   <div class="flex h-screen">
     <!-- Sidebar (fixed for larger screens) -->
-    <aside class="bg-gray-800 text-gray-200 w-64 hidden md:flex flex-col h-full">
+    <aside id="asideBar" class="bg-gray-800 text-gray-200 w-64 hidden flex-col h-full">
+      
+      
       <!-- Sidebar Header -->
       <div class="flex items-center justify-between px-6 py-4 bg-gray-900">
         <h1 class="text-lg font-bold material-symbols-outlined">Dashboard</h1>
@@ -77,6 +78,7 @@
       </nav>
     </aside>
     <!-- Main Content -->
+    <button id="asideBtn" class="material-symbols-outlined text-gray-900 h-fit relative top-8 left-2 hidden">arrow_forward</button>
     <div class="flex-1 p-6 flex gap-6 flex-col w-[50%] h-screen">
       <!-- Header -->
       <header class="flex justify-between items-center mb-6">
@@ -87,7 +89,8 @@
       </header>
     
       <!-- Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6 text-white">
+      <div class="flex justify-around items-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 m-1 lg:grid-cols-3 gap-6 w-[400px] justify-between text-white">
           <button id="authorBtn" class="bg-[#6A1E55] hover:bg-[#A64D79] p-4 rounded-lg shadow">
           <h3 class="text-lg font-medium">Authors</h3>
           <p class="text-2xl font-bold"></p>
@@ -100,6 +103,7 @@
           <h3 class="text-lg font-medium">Versions</h3>
           <p class="text-2xl font-bold"></p>
           </button>
+      </div>
       </div>
       <!-- Modal -->
       <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
@@ -128,58 +132,66 @@
           </form>
         </div>
       </div>
-      <section id="dataTable" class="bg-gray-900 text-white overflow-x-scroll p-10 rounded-lg shadow-lg hidden">
-        <h3 class="text-lg font-medium">LIST: </h3>
-          <table class="border-collapse border-2 border-gray-400 w-[50%] text-white text-center p-20 m-auto">
-            <thead>
+      <?php
+      include("src/database.php");
+      $resultPackages = $conn->query("SELECT * FROM Packages");
+      $resultAuteurs = $conn->query("SELECT * FROM auteurs");
+      $resultVersions = $conn->query("SELECT * FROM versions");
+      echo "<h1>Liste des Packages</h1>";
+      // Start the table outside the loop
+      echo '
+      <section id="dataTable" class="bg-gray-900 text-white w-[100%] h-screen flex flex-col items-center relative overflow-x-scroll lg:overflow-auto p-2 rounded-lg shadow-lg">
+          <table class="border-collapse border-2 border-gray-400 w-auto text-white text-sm text-center">
+              <thead>
+                  <tr>
+                      <th class="border border-gray-400 px-2 py-1">#ID</th>
+                      <th class="border border-gray-400 px-2 py-1">Package_Name</th>
+                      <th class="border border-gray-400 px-2 py-1">Package_Description</th>
+                      <th class="border border-gray-400 px-2 py-1">Date_Creation</th>
+                      <th class="border border-gray-400 px-2 py-1">Autheur_Name</th>
+                      <th class="border border-gray-400 px-2 py-1">Autheur_Email</th>
+                      <th class="border border-gray-400 px-2 py-1">Version_Number</th>
+                      <th class="border border-gray-400 px-2 py-1">Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+      ';
+      
+      while ($row = $resultPackages->fetch_assoc() or $row1 = $resultAuteurs->fetch_assoc() or $row2 = $resultVersions->fetch_assoc()) {
+          // Escape the output to avoid XSS
+          $id = htmlspecialchars($row['PackageID']);
+          $name = htmlspecialchars($row['Nom']);
+          $description = htmlspecialchars($row['Description']);
+          $dateCreation = htmlspecialchars($row['DateCreation']);
+          $authorName = htmlspecialchars($row1['NOM']);
+          $authorEmail = htmlspecialchars($row1['Email']);
+          $version = htmlspecialchars($row2['NumeroVersion']);
+      
+          echo "
               <tr>
-                <th class="border border-gray-400 px-4 py-2">Package_Name</th>
-                <th class="border border-gray-400 px-4 py-2">Package_Description</th>
-                <th class="border border-gray-400 px-4 py-2">Autheur_Name</th>
-                <th class="border border-gray-400 px-4 py-2">Autheur_Email</th>
-                <th class="border border-gray-400 px-4 py-2">Version_Number</th>
-                <th class="border border-gray-400 px-4 py-2">Actions</th>
+                  <td class='border border-gray-400 px-2 py-1'>{$id}</td>
+                  <td class='border border-gray-400 px-2 py-1'>{$name}</td>
+                  <td class='border border-gray-400 px-2 py-1'>{$description}</td>
+                  <td class='border border-gray-400 px-2 py-1'>{$dateCreation}</td>
+                  <td class='border border-gray-400 px-2 py-1'>{$authorName}</td>
+                  <td class='border border-gray-400 px-2 py-1'>{$authorEmail}</td>
+                  <td class='border border-gray-400 px-2 py-1'>{$version}</td>
+                  <td class='flex justify-around items-center'>
+                      <button class='text-[#f2bb05] hover:text-yellow-600 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>edit</button>
+                      <button class='text-[#BF0404] hover:text-red-500 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>delete</button>
+                  </td>
               </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border border-gray-400 px-4 py-2">1</td>
-                <td class="border border-gray-400 px-4 py-2">John Doe</td>
-                <td class="border border-gray-400 px-4 py-2">johndoe@example.com</td>
-                <td class="border border-gray-400 px-4 py-2">johndoe@example.com</td>
-                <td class="border border-gray-400 px-4 py-2">Admin</td>
-                <td class="border border-gray-400 px-4 py-2 flex justify-around">
-                  <button class="bg-[#f2bb05] hover:bg-yellow-600 material-symbols-outlined p-4 rounded-lg shadow">edit</button>
-                  <button class="hover:bg-red-500 material-symbols-outlined p-4 rounded-lg shadow bg-[#BF0404]">delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="border border-gray-400 px-4 py-2">2</td>
-                <td class="border border-gray-400 px-4 py-2">Jane Smith</td>
-                <td class="border border-gray-400 px-4 py-2">janesmith@example.com</td>
-                <td class="border border-gray-400 px-4 py-2">janesmith@example.com</td>
-                <td class="border border-gray-400 px-4 py-2">Editor</td>
-                <td class="border border-gray-400 px-4 py-2 flex justify-around">
-                  <button class="bg-[#f2bb05] hover:bg-yellow-600 material-symbols-outlined p-4 rounded-lg shadow">edit</button>
-                  <button class="hover:bg-red-500 material-symbols-outlined p-4 rounded-lg shadow bg-[#BF0404]">delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="border border-gray-400 px-4 py-2">3</td>
-                <td class="border border-gray-400 px-4 py-2">Michael Brown</td>
-                <td class="border border-gray-400 px-4 py-2">michaelbrown@example.com</td>
-                <td class="border border-gray-400 px-4 py-2">michaelbrown@example.com</td>
-                <td class="border border-gray-400 px-4 py-2">Viewer</td>
-                <td class="border border-gray-400 px-4 py-2 flex justify-around">
-                  <button class="bg-[#f2bb05] hover:bg-yellow-600 material-symbols-outlined p-4 rounded-lg shadow">edit</button>
-                  <button class="hover:bg-red-500 material-symbols-outlined p-4 rounded-lg shadow bg-[#BF0404]">delete</button>
-                </td>
-              </tr>
-            </tbody>
+          ";
+      }
+      
+      // Close the table and section
+      echo '
+              </tbody>
           </table>
       </section>
+      ';
+    ?>
     </main>
-    
   </div>
   <script src="./assets/js/script.js"></script>
 </body>

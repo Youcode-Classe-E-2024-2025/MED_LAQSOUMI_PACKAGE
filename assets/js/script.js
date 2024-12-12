@@ -5,6 +5,9 @@ const dropdownMenu = document.getElementById("dropdownMenu");
 const modal = document.getElementById("modal");
 const packageBtn = document.getElementById("packageBtn");
 const dataTable = document.getElementById("dataTable");
+const overviewTitle = document.getElementById("overviewTitle");
+const asideBar = document.getElementById("asideBar");
+const asideBtn = document.getElementById("asideBtn");
 
 toggleMenu.addEventListener("click", () => {
   dropdownMenu.classList.toggle("hidden");
@@ -23,6 +26,16 @@ cancelModal.addEventListener('click', ()=> {
 })
 
 packageBtn.addEventListener('click', ()=> {
+    overviewTitle.classList.toggle('hidden')
     dataTable.classList.toggle('hidden')
 })
 
+asideBtn.addEventListener('click', ()=> {
+    if(asideBtn.textContent === "arrow_forward"){
+        asideBar.classList.toggle('md:flex');
+        asideBtn.textContent = 'arrow_back';
+    }else{
+        asideBtn.textContent = "arrow_forward";
+        asideBar.classList.toggle('md:flex');
+    }
+})
