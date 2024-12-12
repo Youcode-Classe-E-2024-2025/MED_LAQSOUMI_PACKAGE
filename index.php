@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des Packages Dashboard</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
   <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -163,9 +163,9 @@
         
         // Start the table
         echo '
-        <section id="dataTable" class="bg-gray-900 text-white w-[100%] h-full flex flex-col items-center relative overflow-x-auto lg:overflow-auto rounded-lg shadow-lg">
-        <h1>Liste des Packages: </h1>
-            <table class="border-collapse border-2 border-gray-400 w-screen text-white text-sm text-center p-20 m-5">
+        <section id="dataTable" class="bg-gray-300 text-black w-[100%] flex flex-col relative overflow-x-auto lg:overflow-auto rounded-lg shadow-lg m-auto p-6">
+        <h1 class="self-center"><strong>Liste des Packages: </strong></h1>
+            <table class="border-collapse border-2 border-gray-400 lg:w-[100px] slf-centere text-sm text-center p-20 m-5">
                 <thead>
                     <tr>
                         <th class="border border-gray-400 px-2 py-1">#ID</th>
