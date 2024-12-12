@@ -163,9 +163,9 @@
         
         // Start the table
         echo '
-        <section id="dataTable" class="bg-gray-300 text-black w-[100%] flex flex-col relative overflow-x-auto lg:overflow-auto rounded-lg shadow-lg m-auto p-6">
+        <section id="dataTable" class="bg-gray-300 text-black w-[100%] flex flex-col relative overflow-x-auto lg:overflow-auto gap-4 rounded-lg shadow-lg m-auto p-6">
         <h1 class="self-center"><strong>Liste des Packages: </strong></h1>
-            <table class="border-collapse border-2 border-gray-400 lg:w-[100px] slf-centere text-sm text-center p-20 m-5">
+            <table class="border-collapse border-2 border-gray-400 lg:w-[100px] text-sm text-center">
                 <thead>
                     <tr>
                         <th class="border border-gray-400 px-2 py-1">#ID</th>
@@ -203,8 +203,8 @@
                     <td class='border border-gray-400 px-2 py-1'>{$version}</td>
                     <td class='border border-gray-400 px-2 py-1'>
                         <div class='flex justify-around items-center'>
-                          <button class='text-[#f2bb05] hover:text-yellow-600 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>edit</button>
-                        <button class='text-[#BF0404] hover:text-red-500 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>delete</button>
+                          <button class='text-[#f2bb05] hover:text-yellow-600 hover:scale-125 material-symbols-outlined text-[20px] '>edit</button>
+                        <button class='text-[#BF0404] hover:text-red-500 hover:scale-125 material-symbols-outlined text-[20px]'>delete</button>
                         </div>
                     </td>
                 </tr>
