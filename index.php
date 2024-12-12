@@ -133,67 +133,92 @@
         </div>
       </div>
       <?php
-      include("src/database.php");
-      $resultPackages = $conn->query("SELECT * FROM Packages");
-      $resultAuteurs = $conn->query("SELECT * FROM auteurs");
-      $resultVersions = $conn->query("SELECT * FROM versions");
-      echo "<h1>Liste des Packages</h1>";
-      // Start the table outside the loop
-      echo '
-      <section id="dataTable" class="bg-gray-900 text-white w-[100%] h-screen flex flex-col items-center relative overflow-x-scroll lg:overflow-auto p-2 rounded-lg shadow-lg">
-          <table class="border-collapse border-2 border-gray-400 w-auto text-white text-sm text-center">
-              <thead>
-                  <tr>
-                      <th class="border border-gray-400 px-2 py-1">#ID</th>
-                      <th class="border border-gray-400 px-2 py-1">Package_Name</th>
-                      <th class="border border-gray-400 px-2 py-1">Package_Description</th>
-                      <th class="border border-gray-400 px-2 py-1">Date_Creation</th>
-                      <th class="border border-gray-400 px-2 py-1">Autheur_Name</th>
-                      <th class="border border-gray-400 px-2 py-1">Autheur_Email</th>
-                      <th class="border border-gray-400 px-2 py-1">Version_Number</th>
-                      <th class="border border-gray-400 px-2 py-1">Actions</th>
-                  </tr>
-              </thead>
-              <tbody>
-      ';
-      
-      while ($row = $resultPackages->fetch_assoc() or $row1 = $resultAuteurs->fetch_assoc() or $row2 = $resultVersions->fetch_assoc()) {
-          // Escape the output to avoid XSS
-          $id = htmlspecialchars($row['PackageID']);
-          $name = htmlspecialchars($row['Nom']);
-          $description = htmlspecialchars($row['Description']);
-          $dateCreation = htmlspecialchars($row['DateCreation']);
-          $authorName = htmlspecialchars($row1['NOM']);
-          $authorEmail = htmlspecialchars($row1['Email']);
-          $version = htmlspecialchars($row2['NumeroVersion']);
-      
-          echo "
-              <tr>
-                  <td class='border border-gray-400 px-2 py-1'>{$id}</td>
-                  <td class='border border-gray-400 px-2 py-1'>{$name}</td>
-                  <td class='border border-gray-400 px-2 py-1'>{$description}</td>
-                  <td class='border border-gray-400 px-2 py-1'>{$dateCreation}</td>
-                  <td class='border border-gray-400 px-2 py-1'>{$authorName}</td>
-                  <td class='border border-gray-400 px-2 py-1'>{$authorEmail}</td>
-                  <td class='border border-gray-400 px-2 py-1'>{$version}</td>
-                  <td class='flex justify-around items-center'>
-                      <button class='text-[#f2bb05] hover:text-yellow-600 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>edit</button>
-                      <button class='text-[#BF0404] hover:text-red-500 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>delete</button>
-                  </td>
-              </tr>
-          ";
-      }
-      
-      // Close the table and section
-      echo '
-              </tbody>
-          </table>
-      </section>
-      ';
-    ?>
+        include("src/database.php");
+
+        // Join the tables to retrieve all necessary data in one query
+        $query = "
+            SELECT 
+                Packages.PackageID,
+                Packages.Nom AS PackageName,
+                Packages.Description AS PackageDescription,
+                Packages.DateCreation,
+                Auteurs.Nom AS AuthorName,
+                Auteurs.Email AS AuthorEmail,
+                Versions.NumeroVersion
+            FROM 
+                collaborations 
+            LEFT JOIN packages  ON Packages.PackageID = Collaborations.PackageID
+            LEFT JOIN Auteurs ON Collaborations.AuteurID = Auteurs.AuteurID
+            LEFT JOIN Versions ON Packages.PackageID = Versions.PackageID
+        ";
+
+
+
+        $result = $conn->query($query);
+
+        if (!$result) {
+            die("Query failed: " . $conn->error);
+        }
+        
+        // Start the table
+        echo '
+        <section id="dataTable" class="bg-gray-900 text-white w-[100%] h-full flex flex-col items-center relative p-6 overflow-x-scroll lg:overflow-auto rounded-lg shadow-lg">
+        <h1>Liste des Packages: </h1>
+            <table class="border-collapse border-2 border-gray-400 w-auto text-white text-sm text-center p-6 m-5">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-400 px-2 py-1">#ID</th>
+                        <th class="border border-gray-400 px-2 py-1">Package_Name</th>
+                        <th class="border border-gray-400 px-2 py-1">Package_Description</th>
+                        <th class="border border-gray-400 px-2 py-1">Date_Creation</th>
+                        <th class="border border-gray-400 px-2 py-1">Autheur_Name</th>
+                        <th class="border border-gray-400 px-2 py-1">Autheur_Email</th>
+                        <th class="border border-gray-400 px-2 py-1">Version_Number</th>
+                        <th class="border border-gray-400 px-2 py-1">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        ';
+
+        // Loop through the result set
+        while ($row = $result->fetch_assoc()) {
+            // Escape the output to avoid XSS
+            $id = htmlspecialchars($row['PackageID']);
+            $name = htmlspecialchars($row['PackageName']);
+            $description = htmlspecialchars($row['PackageDescription']);
+            $dateCreation = htmlspecialchars($row['DateCreation']);
+            $authorName = htmlspecialchars($row['AuthorName']);
+            $authorEmail = htmlspecialchars($row['AuthorEmail']);
+            $version = htmlspecialchars($row['NumeroVersion']);
+        
+            echo "
+                <tr>
+                    <td class='border border-gray-400 px-2 py-1'>{$id}</td>
+                    <td class='border border-gray-400 px-2 py-1'>{$name}</td>
+                    <td class='border border-gray-400 px-2 py-1'>{$description}</td>
+                    <td class='border border-gray-400 px-2 py-1'>{$dateCreation}</td>
+                    <td class='border border-gray-400 px-2 py-1'>{$authorName}</td>
+                    <td class='border border-gray-400 px-2 py-1'>{$authorEmail}</td>
+                    <td class='border border-gray-400 px-2 py-1'>{$version}</td>
+                    <td class='border border-gray-400 px-2 py-1'>
+                        <div class='flex justify-around items-center'>
+                          <button class='text-[#f2bb05] hover:text-yellow-600 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>edit</button>
+                        <button class='text-[#BF0404] hover:text-red-500 hover:scale-125 material-symbols-outlined rounded shadow text-xs px-2 py-1'>delete</button>
+                        </div>
+                    </td>
+                </tr>
+            ";
+        }
+
+        // Close the table and section
+        echo '
+                </tbody>
+            </table>
+        </section>
+        ';
+        ?>
     </main>
   </div>
   <script src="./assets/js/script.js"></script>
 </body>
-
 </html>
