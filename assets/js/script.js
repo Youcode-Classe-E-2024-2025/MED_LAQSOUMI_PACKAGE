@@ -16,9 +16,11 @@ toggleMenu.addEventListener("click", () => {
 
 addBtn.addEventListener('click', ()=> {
     modal.classList.remove("hidden");
+    modal.classList.add("flex");
 })
 
 closeModal.addEventListener('click', ()=> {
+    modal.classList.remove("flex");
     modal.classList.add("hidden");
 })
 cancelModal.addEventListener('click', ()=> {

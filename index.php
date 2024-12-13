@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des Packages Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -107,24 +107,36 @@
       </div>
       </div>
       <!-- Modal -->
-      <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+      <div id="modal" class="hidden fixed inset-0 z-50  items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
         <div class="bg-[#F3F4F6] rounded-lg shadow-lg  max-w-md p-6 relative">
           <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
             <span class="material-symbols-outlined">close</span>
           </button>
           <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">Add New Package</h2>
-          <form id="packageAuthorForm" class="space-y-4">
+          <form id="packageAuthorForm" class="space-y-2">
             <div>
               <label for="packageName" class="block text-sm font-medium text-gray-600">Package Name</label>
               <input type="text" id="packageName" name="packageName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter package name" required />
+            </div>
+            <div>
+              <label for="description" class="block text-sm font-medium text-gray-600">Description</label>
+              <textarea id="description" name="description" rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter a brief description" required></textarea>
             </div>
             <div>
               <label for="authorName" class="block text-sm font-medium text-gray-600">Author Name</label>
               <input type="text" id="authorName" name="authorName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter author name" required />
             </div>
             <div>
-              <label for="description" class="block text-sm font-medium text-gray-600">Description</label>
-              <textarea id="description" name="description" rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter a brief description" required></textarea>
+              <label for="authorName" class="block text-sm font-medium text-gray-600">Author Name</label>
+              <input type="text" id="authorName" name="authorName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter author name" required />
+            </div>
+            <div>
+              <label for="authorName" class="block text-sm font-medium text-gray-600">Author Name</label>
+              <input type="text" id="authorName" name="authorName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter author name" required />
+            </div>
+            <div>
+              <label for="authorName" class="block text-sm font-medium text-gray-600">Author Name</label>
+              <input type="text" id="authorName" name="authorName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter author name" required />
             </div>
             <div class="flex justify-end space-x-4">
               <button type="button" id="cancelModal" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Cancel</button>
@@ -163,9 +175,9 @@
         
         // Start the table
         echo '
-        <section id="dataTable" class="bg-gray-300 text-black w-[100%] flex flex-col relative overflow-x-auto lg:overflow-auto gap-4 rounded-lg shadow-lg m-auto p-6">
+        <section id="dataTable" class="bg-[#313946] text-white w-[100%] flex flex-col relative overflow-x-auto lg:overflow-auto gap-4 m-auto p-6">
         <h1 class="self-center"><strong>Liste des Packages: </strong></h1>
-            <table class="border-collapse border-2 border-gray-400 lg:w-[100px] text-sm text-center">
+            <table class="border-collapse border-2 border-gray-400 lg:w-[100px] text-sm lg:self-center text-center">
                 <thead>
                     <tr>
                         <th class="border border-gray-400 px-2 py-1">#ID</th>
