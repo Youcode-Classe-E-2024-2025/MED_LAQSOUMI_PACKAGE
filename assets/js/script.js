@@ -27,11 +27,6 @@ cancelModal.addEventListener('click', ()=> {
     modal.classList.add("hidden");
 })
 
-packageBtn.addEventListener('click', ()=> {
-    overviewTitle.classList.toggle('hidden')
-    dataTable.classList.toggle('hidden')
-})
-
 asideBtn.addEventListener('click', ()=> {
     if(asideBtn.textContent === "arrow_forward"){
         asideBar.classList.toggle('md:flex');
