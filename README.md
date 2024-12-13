@@ -1,153 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Package Management System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #444;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h2, h3 {
-            color: #555;
-        }
-        code {
-            background: #eee;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-family: Consolas, "Courier New", Courier, monospace;
-        }
-        pre {
-            background: #f9f9f9;
-            padding: 10px;
-            border-left: 5px solid #ccc;
-            overflow-x: auto;
-        }
-        ul {
-            margin: 10px 0;
-            padding: 0 20px;
-            list-style-type: disc;
-        }
-        .btn {
-            display: inline-block;
-            background: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 3px;
-            margin-top: 10px;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-        .folder-structure {
-            font-family: Consolas, "Courier New", Courier, monospace;
-            background: #f1f1f1;
-            padding: 10px;
-            border-radius: 5px;
-            white-space: pre-wrap;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Package Management System</h1>
-        <p>A web application to manage packages, authors, collaborations, and versions with CRUD functionalities.</p>
+Package Management System
 
-        <h2>Features</h2>
-        <ul>
-            <li>Create, Read, Update, and Delete (CRUD) operations for packages, authors, collaborations, and versions.</li>
-            <li>Relational database with foreign key constraints.</li>
-            <li>Built using PHP and MySQL.</li>
-        </ul>
 
-        <h2>Prerequisites</h2>
-        <p>Before setting up the project, ensure you have the following installed:</p>
-        <ul>
-            <li>PHP (Version 7.4 or later)</li>
-            <li>MySQL (or MariaDB)</li>
-            <li>XAMPP or WAMP (for local development, optional)</li>
-            <li>Composer (optional, if PHP dependencies are added)</li>
-        </ul>
+A web application to manage packages, authors, collaborations, and versions with CRUD functionalities.
 
-        <h2>Setup Instructions</h2>
-        <h3>Step 1: Clone the Repository</h3>
-        <pre>
+Features
+Create, Read, Update, and Delete (CRUD) operations for packages, authors, collaborations, and versions.
+Relational database with foreign key constraints.
+Built using PHP and MySQL.
+Prerequisites
+Before setting up the project, ensure you have the following installed:
+
+PHP (Version 7.4 or later)
+MySQL (or MariaDB)
+XAMPP or WAMP (for local development, optional)
+Composer (optional, if PHP dependencies are added)
+Setup Instructions
+Step 1: Clone the Repository
+bash
+
 git clone https://github.com/your-username/package-management-system.git
 cd package-management-system
-        </pre>
+Step 2: Set Up the Database
+Open your MySQL client (phpMyAdmin, MySQL Workbench, or CLI).
+Create a new database named gestion_packages:
+sql
 
-        <h3>Step 2: Set Up the Database</h3>
-        <ol>
-            <li>Open your MySQL client (phpMyAdmin, MySQL Workbench, or CLI).</li>
-            <li>Create a new database named <code>gestion_packages</code>:
-                <pre>
 CREATE DATABASE gestion_packages;
-                </pre>
-            </li>
-            <li>Import the database schema:
-                <pre>
-mysql -u [username] -p gestion_packages < database.sql
-                </pre>
-                Replace <code>[username]</code> with your MySQL username (default: <code>root</code>).
-            </li>
-        </ol>
+Import the database schema:
+bash
 
-        <h3>Step 3: Configure the Database Connection</h3>
-        <p>Open the <code>database.php</code> file in the project directory and update the database credentials:</p>
-        <pre>
+mysql -u [username] -p gestion_packages < database.sql
+Replace [username] with your MySQL username (default: root).
+Step 3: Configure the Database Connection
+Open the database.php file in the project directory.
+Update the database credentials:
+php
+
 $host = 'localhost';
 $dbname = 'gestion_packages';
 $username = 'root'; // Default for XAMPP/WAMP
 $password = '';     // Default for XAMPP/WAMP
-        </pre>
+Step 4: Start the Development Server
+If you're using XAMPP/WAMP, move the project to the htdocs or www folder.
+Start the server using:
+bash
 
-        <h3>Step 4: Start the Development Server</h3>
-        <ol>
-            <li>If you're using XAMPP/WAMP, move the project to the <code>htdocs</code> or <code>www</code> folder.</li>
-            <li>Start the server using:
-                <pre>
 php -S localhost:8000
-                </pre>
-            </li>
-            <li>Open your browser and navigate to:
-                <pre>
+Open your browser and navigate to:
+arduino
+
 http://localhost:8000
-                </pre>
-            </li>
-        </ol>
+Step 5: Test the Application
+Access the application in your browser.
+Test the CRUD functionalities:
+Add, edit, and delete packages.
+Manage authors and collaborations.
+Folder Structure
+perl
 
-        <h3>Step 5: Test the Application</h3>
-        <ul>
-            <li>Access the application in your browser.</li>
-            <li>Test the CRUD functionalities:
-                <ul>
-                    <li>Add, edit, and delete packages.</li>
-                    <li>Manage authors and collaborations.</li>
-                </ul>
-            </li>
-        </ul>
 
-        <h2>Folder Structure</h2>
-        <div class="folder-structure">
 package-management-system/
 ├── src/
 │   ├── Add.php           # Handles create operations
@@ -158,10 +69,5 @@ package-management-system/
 ├── database.sql          # Database schema
 ├── README.md             # Project setup instructions
 └── .gitignore            # Git ignored files
-        </div>
-
-        <h2>Contributions</h2>
-        <p>Feel free to fork this repository and submit pull requests to improve or extend the project.</p>
-    </div>
-</body>
-</html>
+Contributions
+Feel free to fork this repository and submit pull requests to improve or extend the project.
