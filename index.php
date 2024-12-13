@@ -141,9 +141,9 @@ require("./src/database.php");
                     <select id="authorName" name="authorName" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500" required>
                         <option value="">Select an author</option>
                         <?php
-                        $result = $conn->query("SELECT NOM FROM auteurs");
+                        $result = $conn->query("SELECT AuteurID, NOM FROM auteurs");
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option value='{$row['id']}'>{$row['NOM']}</option>";
+                            echo "<option value='{$row['AuteurID']}'>{$row['NOM']}</option>";
                         }
                         ?>
                     </select>
